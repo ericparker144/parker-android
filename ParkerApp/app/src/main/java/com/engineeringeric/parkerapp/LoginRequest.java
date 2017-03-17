@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class LoginRequest extends StringRequest {
 
-    private static final String LOGIN_REQUEST_URL = "http://localhost:8080/api/Login";
+    private static final String LOGIN_REQUEST_URL = Config.getApiBaseUrl() + "/Login";
     private Map<String, String> params;
 
     public LoginRequest(String username, String password, Response.Listener<String> listener, Response.ErrorListener error) {

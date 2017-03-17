@@ -1,11 +1,13 @@
 package com.engineeringeric.parkerapp;
 
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // create references to each input in the xml file
+        final Globals g = (Globals) getApplication();
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
         final Button bLogin = (Button) findViewById(R.id.bLogin);
@@ -42,13 +45,21 @@ public class MainActivity extends AppCompatActivity {
                             try {
                                 JSONObject jsonResponse = new JSONObject(response);
                                 boolean result = jsonResponse.getBoolean("success");
-                                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
                                 if (result) {
-                                    builder.setMessage("good").create().show();
+
+                                    Intent intent = new Intent(MainActivity.this, LandingActivity.class);
+
+                                    JSONObject userData = jsonResponse.getJSONArray("result").getJSONObject(0);
+                                    g.setUserId(userData.getString("Id"));
+                                    g.setFirstName(userData.getString("FirstName"));
+                                    g.setLastName(userData.getString("LastName"));
+
+                                    MainActivity.this.startActivity(intent);
                                 }
                                 else {
-                                    builder.setMessage("no good").create().show();
+                                    Toast error = Toast.makeText(MainActivity.this, jsonResponse.getString("error"), Toast.LENGTH_LONG);
+                                    error.show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

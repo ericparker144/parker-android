@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Parker</string>
+    <string name="welcome">Welcome %1$s %2$s!</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_map">Map</string>
+    <string name="menu_spots">Spots</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_map_fragment">Hello map fragment</string>
+    <string name="hello_spots_fragment">Hello spots fragment</string>
 </resources>

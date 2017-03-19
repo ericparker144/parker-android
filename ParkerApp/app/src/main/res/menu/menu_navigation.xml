@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/navProfile"
+        android:title="@string/menu_profile"
+        android:icon="@drawable/ic_profile"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/navMap"
+        android:title="@string/menu_map"
+        android:icon="@drawable/ic_map"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/navSpots"
+        android:title="@string/menu_spots"
+        android:icon="@drawable/ic_parking"
+        app:showAsAction="ifRoom"
+        />
+
+</menu>

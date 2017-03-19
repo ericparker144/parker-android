@@ -1,12 +1,16 @@
 package com.engineeringeric.parkerapp;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 
 /**
@@ -18,14 +22,22 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
+    private Resources res;
+    private Globals g;
 
     public ProfileFragment() {
-        // Required empty public constructor
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        g = (Globals) getActivity().getApplication();
+
+        TextView tvName = (TextView) view.findViewById(R.id.tvName);
+        tvName.setText(getString(R.string.welcome, g.getFirstName(), g.getLastName()));
+
+        return view;
     }
 }
